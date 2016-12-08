@@ -1,0 +1,2 @@
+- https://en.wikipedia.org/wiki/Floor_and_ceiling_functions 
+- http://www.freepascal.org/docs-html/rtl/system/trunc.html
