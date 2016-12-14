@@ -12,13 +12,14 @@ int main() {
 
   // Data masukkan
   cin >> data;
-  while (bil < data) {
+  while (bil < data && pangkat < 16) {
     bil = pow(2, ++pangkat);    
-    if (bil == data) {
-      ket = "ya";
-    } else {
+    if (bil != data) {
       ket = "bukan";
+    } else {
+      ket = "ya";
     }
+    // cout << pangkat << endl;
     // cout << bil << " * ";
   }
 
