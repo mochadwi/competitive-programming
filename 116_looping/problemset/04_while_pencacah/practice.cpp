@@ -5,20 +5,10 @@
 using namespace std;
 
 int main(void) {
-  int data, total = 0;
-  ifstream fin;
-
-  fin.open("practice.cpp", ios::in);
-  assert(!fin.fail());
-  fin >> data;
-
-  while (!fin.eof()) {
-    // cout << data << endl;
-    total += data;
-    fin >> data;
+  int bil, total = 0;
+  string line;
+  while (getline(cin, line)) {
+    total += stoi(line,nullptr,0);
   }
-  fin.close();
-  assert(!fin.fail());
   cout << total << endl;
-  return 0;
 }
