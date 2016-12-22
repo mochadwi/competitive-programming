@@ -2,25 +2,21 @@
 #include <math.h>
 using namespace std;
 
-long int data, bil, pangkat;
-string ket;
+int m, n;
 
 int main() {
   // Deklarasi + Inisialisasi awal
-  data = bil = pangkat = 0;
+  m = 1;
 
   // Data masukkan
-  cin >> data;
-  while (bil < data) {
-    bil = pow(2, ++pangkat);    
-    // cout << bil << " * ";
+  cin >> n;
+  while (m < n) {
+    m *= 2;
   }
-  if (bil != data) {
-    // ket = "bukan";
-    cout << "bukan" << endl;
-  } else {
-    // ket = "ya";
+  
+  if (m == n) {
     cout << "ya" << endl;
+  } else {
+    cout << "bukan" << endl;
   }
-  // cout << ket << endl;
 }
