@@ -10,17 +10,17 @@ int main() {
   cout << "Masukkan jumlah: " << endl;
   cin >> jml;
   
-  n = -1;
-  for (i = jml; i >= 1; i--) {
-    n++;
-    k = 0;
-    for (j = 1; j <= jml; j++) {
-      if (j >= i) {
-        cout << c(n, k++);
-      }
-      cout << " ";
+  for (i = 0; i < jml; i++) {
+    n = 1;
+    for (j = 1; j < (jml - i); j++) {
+      // cout << "   ";
+      cout << " * ";
     }
-    cout << endl;
+    // for (k = 0; k <= i; k++) {
+    //   cout << "      " << "*";
+    //   n = n * (i - k) / (k + 1);
+    // }
+    cout << endl << endl;
   }
 }
 
