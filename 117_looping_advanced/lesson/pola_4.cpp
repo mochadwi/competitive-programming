@@ -16,4 +16,16 @@ int main() {
     }
     cout << endl;
   }
+
+  // downto : >=
+  // to : <=
+  for (i = jml - 1; i >= 1; i--) {
+    for (j = jml; j >= 1; j--) {
+      if (j <= i) {
+        cout << "*";
+      }
+      cout << " ";
+    }
+    cout << endl;
+  }
 }
