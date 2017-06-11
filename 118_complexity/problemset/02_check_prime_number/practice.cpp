@@ -13,7 +13,8 @@ int main() {
     
     cin >> primeNumber;
 
-    if (primeNumber > 1 && (((primeNumber % 3 != 0) && primeNumber % 2 != 0) || 
+    if (primeNumber > 1 && 
+        (((primeNumber % 2 != 0) && (primeNumber % 3 != 0)) || 
         (primeNumber == 2) || (primeNumber == 3))) {
       cout << "YA";
     } else {
