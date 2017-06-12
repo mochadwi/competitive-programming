@@ -27,12 +27,12 @@ int main() {
       }
       
       if (count == 0)
-        {
-          cout << "YA";
-        } else
-        {
-          cout << "BUKAN";    
-        }
+      {
+        cout << "YA";
+      } else
+      {
+        cout << "BUKAN";    
+      }
     } else
     {
       cout << "BUKAN";
