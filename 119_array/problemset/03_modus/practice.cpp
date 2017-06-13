@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     int max = 1000;
-    long mode, curr, n = 0;
+    long mode, curr, n, low, high = 0;
     long a[max], freq[max];
 
     cin >> n;
@@ -41,21 +41,23 @@ int main()
         {
             if (a[i] == a[j])
             {
-                mode = a[i];
-                curr = i;
-                freq[curr]++;
+                freq[i]++;
             }
         }
     }
 
-    for (int i = 0; i < n; i++)
+    high = freq[0];
+    for (int i = 1; i < n; i++)
     {
-        if (freq[i] > )
+        if (freq[i] > high)
+        {
+            high = i;
+        }
     }
 
     // cout << "Modus: ";
 
-    cout << mode << endl;
+    cout << a[high] << endl;
 
     return 0;
 }
