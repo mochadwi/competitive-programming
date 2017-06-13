@@ -37,7 +37,8 @@ int main()
 
     cout << endl;
 
-    // find mode
+    // find highest "mode"
+    low = freq[0];
     for (int i = 0; i < n - 1; i++)
     {
         for (int j = i + 1; j < n; j++)
@@ -45,34 +46,26 @@ int main()
             if (a[i] == a[j])
             {
                 freq[i]++;
-                mode = a[i];
-                cout << "freq[" << i << "]: " << freq[i] << endl;
-                cout << "mode: " << mode << endl;
+                low = i;
             }
         }
+        cout << "freq[" << i << "]: " << freq[i] << endl;
     }
 
-    high = freq[0];
-    mode = a[high];
-    for (int i = 1; i < n; i++)
+    high = 0;
+    for (int i = 0; i < n; i++)
     {
         if (freq[i] > high)
         {
-            high = i;
+            // high = i;
             mode = a[high];
             cout << "high: " << high << endl;
         }
     }
 
-    // cout << "Modus: ";
+    // if (freq[low] == freq[])
 
-    if (mode < a[high])
-    {
-        cout << a[high] << endl;
-    } else
-    {
-        cout << mode << endl;
-    }
+    cout << mode << endl;
 
     return 0;
 }
