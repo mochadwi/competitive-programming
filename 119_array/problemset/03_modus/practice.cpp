@@ -13,6 +13,7 @@ int main()
     for (int i = 0; i < n; i++)
     {
         cin >> a[i]; // user-defined data
+        freq[i] = 0;
     }
 
     // bubble sort
@@ -29,10 +30,12 @@ int main()
         }
     }
 
-    // for (int i = 0; i < n; i++)
-    // {
-    //     cout << a[i] << endl;
-    // }
+    for (int i = 0; i < n; i++)
+    {
+        cout << a[i] << " ";
+    }
+
+    cout << endl;
 
     // find mode
     for (int i = 0; i < n - 1; i++)
@@ -42,22 +45,34 @@ int main()
             if (a[i] == a[j])
             {
                 freq[i]++;
+                mode = a[i];
+                cout << "freq[" << i << "]: " << freq[i] << endl;
+                cout << "mode: " << mode << endl;
             }
         }
     }
 
     high = freq[0];
+    mode = a[high];
     for (int i = 1; i < n; i++)
     {
         if (freq[i] > high)
         {
             high = i;
+            mode = a[high];
+            cout << "high: " << high << endl;
         }
     }
 
     // cout << "Modus: ";
 
-    cout << a[high] << endl;
+    if (mode < a[high])
+    {
+        cout << a[high] << endl;
+    } else
+    {
+        cout << mode << endl;
+    }
 
     return 0;
 }
