@@ -6,8 +6,8 @@ using namespace std;
 int main()
 {
     int max = 1000;
-    int count, n = 0;
-    long a[max], b[max];
+    int mode, curr, n = 0;
+    long a[max], freq[max];
 
     cin >> n;
     for (int i = 0; i < n; i++)
@@ -15,18 +15,42 @@ int main()
         cin >> a[i];
     }
 
-    sort(a, a);
-
-    for (int i = 0; i < n; i++)
+    // bubble sort
+    for (int i = 0; i < n - 1; i++)
     {
-        // if (a[i] == a[i + 1])
-        // {
-        //     count = i;
-        // }
-        cout << a[i];
+        for (int j = i + 1; j < n; j++)
+        {
+            if (a[j] < a[i])
+            {
+                int temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
     }
 
-    // cout << a[count] << endl;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cout << a[i] << endl;
+    // }
+
+    // find mode
+    for (int i = 0; i < n - 1; i++)
+    {
+        for (int j = i + 1; j < n; j++)
+        {
+            if (a[i] == a[j])
+            {
+                mode = a[i];
+                freq[i]++;
+            }
+        }
+    }
+
+    // cout << "Modus: ";
+
+    // if ()
+    cout << mode << endl;
 
     return 0;
 }
