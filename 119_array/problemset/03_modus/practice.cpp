@@ -6,13 +6,13 @@ using namespace std;
 int main()
 {
     int max = 1000;
-    int mode, curr, n = 0;
+    long mode, curr, n = 0;
     long a[max], freq[max];
 
     cin >> n;
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        cin >> a[i]; // user-defined data
     }
 
     // bubble sort
@@ -42,14 +42,19 @@ int main()
             if (a[i] == a[j])
             {
                 mode = a[i];
-                freq[i]++;
+                curr = i;
+                freq[curr]++;
             }
         }
     }
 
+    for (int i = 0; i < n; i++)
+    {
+        if (freq[i] > )
+    }
+
     // cout << "Modus: ";
 
-    // if ()
     cout << mode << endl;
 
     return 0;
