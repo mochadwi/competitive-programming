@@ -59,17 +59,15 @@ int main()
         // cout << "freq[" << i << "]: " << freq[i] << endl;
     }
 
-    high = 0;
+    mode = freq[0];
     for (int i = 0; i < n - 1; i++)
     {
         if (freq[i] >= freq[high])
         {
-            high = i;
+            mode = a[i];
             // cout << "high: " << high << endl;
         }
     }
-
-    mode = a[high];
 
     cout << mode << endl;
 
