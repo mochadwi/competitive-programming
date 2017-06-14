@@ -1,13 +1,15 @@
 #include <iostream>
-#include <algorithm>
+#include <array>
 
 using namespace std;
 
 int main()
 {
     int max = 1000;
-    long mode, curr, n, low, high = 0;
-    long a[max], freq[max];
+    int freq[max];
+    long mode, count, n, low, high = 0;
+    long a[max];
+
 
     cin >> n;
     for (int i = 0; i < n; i++)
@@ -32,38 +34,42 @@ int main()
 
     for (int i = 0; i < n; i++)
     {
-        cout << a[i] << " ";
+        // cout << a[i] << " ";
     }
 
-    cout << endl;
+    // cout << endl;
 
     // find highest "mode"
-    low = freq[0];
     for (int i = 0; i < n - 1; i++)
     {
         for (int j = i + 1; j < n; j++)
         {
+            if (a[i] < 1)
+            {
+                // cout << "element < 1" << endl;
+                break;
+            }
+
             if (a[i] == a[j])
             {
+                a[j] = 0;
                 freq[i]++;
-                low = i;
             }
         }
-        cout << "freq[" << i << "]: " << freq[i] << endl;
+        // cout << "freq[" << i << "]: " << freq[i] << endl;
     }
 
     high = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n - 1; i++)
     {
-        if (freq[i] > high)
+        if (freq[i] >= freq[high])
         {
-            // high = i;
-            mode = a[high];
-            cout << "high: " << high << endl;
+            high = i;
+            // cout << "high: " << high << endl;
         }
     }
 
-    // if (freq[low] == freq[])
+    mode = a[high];
 
     cout << mode << endl;
 
