@@ -1,15 +1,13 @@
 #include <iostream>
-#include <array>
 
 using namespace std;
 
 int main()
 {
-    int max = 1000;
+    int max = 100000;
     long mode, count, f, n, low, high = 0;
-    long a[max] = {0};
-    long freq[max] = {0};
-
+    long a[max];
+    long freq[max];
 
     cin >> n;
     for (int i = 0; i < n; i++)
@@ -19,29 +17,30 @@ int main()
     }
 
     // bubble sort
-    for (int i = 0; i < n - 1; i++)
-    {
-        for (int j = i + 1; j < n; j++)
-        {
-            if (a[j] < a[i])
-            {
-                int temp = a[i];
-                a[i] = a[j];
-                a[j] = temp;
-            }
-        }
-    }
+    // for (int i = 0; i < n - 1; i++)
+    // {
+    //     for (int j = i + 1; j < n; j++)
+    //     {
+    //         if (a[j] < a[i])
+    //         {
+    //             int temp = a[i];
+    //             a[i] = a[j];
+    //             a[j] = temp;
+    //         }
+    //     }
+    // }
 
-    for (int i = 0; i < n; i++)
-    {
+    // for (int i = 0; i < n; i++)
+    // {
         // cout << a[i] << " ";
-    }
+    // }
 
     // cout << endl;
 
     // find highest "mode"
     mode = a[0];
     // f = 1;
+    high = 0;
     for (int i = 0; i < n - 1; i++)
     {
         count = 1;
@@ -55,22 +54,17 @@ int main()
                     freq[i]++;
                     // count++;
                 }
+                if (freq[i] >= freq[high])
+                {
+                    high = i;
+                    mode = a[high];
+                    // cout << "high: " << high << endl;
+                }
             }
             // cout << "freq[" << i << "]: " << freq[i] << endl;
         }
     }
 
-    high = 0;
-    for (int i = 0; i < n - 1; i++)
-    {
-        if (freq[i] >= freq[high])
-        {
-            high = i;
-            // cout << "high: " << high << endl;
-        }
-    }
-
-    mode = a[high];
     cout << mode << endl;
 
     return 0;
