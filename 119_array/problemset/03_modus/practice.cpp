@@ -6,9 +6,8 @@ using namespace std;
 int main()
 {
     int max = 1000;
-    int freq[max];
-    long mode, count, n, low, high = 0;
-    long a[max];
+    long mode, count, f, n, low, high = 0;
+    long a[max], freq[max];
 
 
     cin >> n;
@@ -40,35 +39,52 @@ int main()
     // cout << endl;
 
     // find highest "mode"
+    mode = a[0];
+    f = 1;
     for (int i = 0; i < n - 1; i++)
     {
-        for (int j = i + 1; j < n; j++)
+        count = 1;
+        if (a[i] > 0)
         {
-            if (a[i] < 1)
+            for (int j = i + 1; j < n; j++)
             {
-                // cout << "element < 1" << endl;
-                break;
+                if (a[i] == a[j])
+                {
+                    a[j] = 0;
+                    // freq[i]++;
+                    count++;
+                }
             }
-
-            if (a[i] == a[j])
+            // cout << "freq[" << i << "]: " << freq[i] << endl;
+            if (count > f)
             {
-                a[j] = 0;
-                freq[i]++;
+                f = count;
+                mode = a[i];
+            } else
+            {
+                if (count == f)
+                {
+                    if (mode < a[i])
+                    {
+                        f = count;
+                        mode = a[i];
+                    }
+                }
             }
         }
-        // cout << "freq[" << i << "]: " << freq[i] << endl;
     }
 
-    mode = freq[0];
-    for (int i = 0; i < n - 1; i++)
-    {
-        if (freq[i] >= freq[high])
-        {
-            mode = a[i];
-            // cout << "high: " << high << endl;
-        }
-    }
+    // high = 0;
+    // for (int i = 0; i < n - 1; i++)
+    // {
+    //     if (freq[i] >= freq[high])
+    //     {
+    //         high = i;
+    //         // cout << "high: " << high << endl;
+    //     }
+    // }
 
+    // mode = a[high];
     cout << mode << endl;
 
     return 0;
