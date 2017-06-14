@@ -7,7 +7,8 @@ int main()
 {
     int max = 1000;
     long mode, count, f, n, low, high = 0;
-    long a[max], freq[max];
+    long a[max] = {0};
+    long freq[max] = {0};
 
 
     cin >> n;
@@ -40,7 +41,7 @@ int main()
 
     // find highest "mode"
     mode = a[0];
-    f = 1;
+    // f = 1;
     for (int i = 0; i < n - 1; i++)
     {
         count = 1;
@@ -51,40 +52,25 @@ int main()
                 if (a[i] == a[j])
                 {
                     a[j] = 0;
-                    // freq[i]++;
-                    count++;
+                    freq[i]++;
+                    // count++;
                 }
             }
             // cout << "freq[" << i << "]: " << freq[i] << endl;
-            if (count > f)
-            {
-                f = count;
-                mode = a[i];
-            } else
-            {
-                if (count == f)
-                {
-                    if (mode < a[i])
-                    {
-                        f = count;
-                        mode = a[i];
-                    }
-                }
-            }
         }
     }
 
-    // high = 0;
-    // for (int i = 0; i < n - 1; i++)
-    // {
-    //     if (freq[i] >= freq[high])
-    //     {
-    //         high = i;
-    //         // cout << "high: " << high << endl;
-    //     }
-    // }
+    high = 0;
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (freq[i] >= freq[high])
+        {
+            high = i;
+            // cout << "high: " << high << endl;
+        }
+    }
 
-    // mode = a[high];
+    mode = a[high];
     cout << mode << endl;
 
     return 0;
