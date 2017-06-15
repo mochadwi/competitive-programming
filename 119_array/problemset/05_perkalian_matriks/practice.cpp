@@ -38,14 +38,15 @@ int main()
   {
     for (int j = 0; j < p; j++)
     {
+      temp = 0;
       for (int k = 0; k < m; k++)
       {
         temp += a[i][k] * b[k][j];
-        cout << temp;
-        if (k != 0) cout << " ";
       }
-      cout << endl;
+      cout << temp;
+      if (j < p-1) cout << " "; 
     }
+    cout << endl;
   }
 
   return 0;
