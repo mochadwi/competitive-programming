@@ -11,12 +11,13 @@ long reverse(long x)
   
   temp = x;
 
+  // cout << "=== reverse ===" << endl;
   while (temp > 0)
   {
     ret = (ret * 10) + (temp % 10);
     temp /= 10;
-    cout << "Ret: " << ret << "; Temp: " << temp;
-    cout << endl;
+    // cout << "Ret: " << ret << "; Temp: " << temp;
+    // cout << endl;
   }
 
   return ret;
@@ -28,8 +29,7 @@ int main()
   cin >> a;
   cin >> b;
 
-  cout << reverse(a) << endl;
-  cout << reverse(b) << endl;
+  cout << reverse(reverse(a) + reverse(b)) << endl;
 
   return 0;
 }
