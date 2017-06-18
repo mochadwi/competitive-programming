@@ -15,34 +15,39 @@ void searchPrime(long n)
   long i, j;
   long frek;
   x = 0;
-  for (i = 0; i < n / 2; i++)
+  // cout << trunc(sqrt(n)) << endl;
+  for (i = 2; i <= trunc(sqrt(n)); i++)
+  // for (i = 2; i <= (n / 2); i++)
   {
-    frek = 0;
-    if (i > 1)
+    while (n % i == 0)
     {
-        for (j = 2; j <= (trunc(sqrt(i))); j++)
-        {
-          if (i % j == 0)
-          {
-            frek++;
-          }
-        }
-        if (frek == 0)
-        {
-          prim[x] = i;
-          x++;
-        }
+      // cout << endl << "start while" << endl;
+      n /= i;
+      prim[x] = i;
+      x++;
+      // cout << "i: " << i << "; ";
+      // cout << "n: " << n << "; ";
+      // if (i < trunc(sqrt(n))) cout << endl << "end while" << endl;
     }
+    // cout << endl << "open for" << endl;
+    // cout << "i: " << i << "; ";
+    // cout << "n: " << n << "; ";
+    // cout << "x: " << x << "; ";
+    // cout << "trunc(sqrt(" << n << ")): "
+    // << trunc(sqrt(n)) << endl;
+    if (i > trunc(sqrt(n))) prim[x] = n;
+    // cout << endl << "for" << endl;
   }
+  // cout << endl;
 }
 
 void showPrime(long n)
 {
   cout << "Display PRIME" << endl;
-  for (int i = 0; i < n; i++)
+  for (int i = 0; i <= n; i++)
   {
     cout << prim[i];
-    if (i < n - 1) cout << " ";
+    if (i < n) cout << " ";
   }
   cout << endl;
 }
@@ -85,17 +90,9 @@ void showFactor(long n)
   cout << endl;
 }
 
-int main()
+void displayOut(long y)
 {
-  tr = false;
-	y = 0;
-	cin >> n;
-	l = n;
-	searchPrime(n);
-  // showPrime(x);
-	factorate(n);
-  // showFactor(y);
-	it = 1;
+  it = 1;
 
 	for (i = 0; i < y - 1; i++)
 	{
@@ -126,6 +123,55 @@ int main()
 	{
 		cout << outp[i] << '^' << it << endl;
 	}
+}
+
+void displayPri(long y)
+{
+  it = 1;
+
+	for (i = 0; i < y; i++)
+	{
+    // cout << "= OUTPUT INNER LOOP =";
+		if (prim[i] == prim[i+1])
+		{
+			it++;
+		} else if (prim[i] != prim[i+1])
+		{
+			if (it == 1)
+			{
+				cout << prim[i] << " x ";
+				it = 1;
+			} else
+			{
+				cout << prim[i] << '^' << it << " x ";
+				it = 1;
+			}
+		}
+    // cout << "prim[" << i << "]: " << prim[i] << "; " << endl;
+    // if (i < y - 1) cout << " x "
+	}
+
+	if (it == 1)
+	{
+		cout << prim[i] << endl;
+	} else
+	{
+		cout << prim[i] << '^' << it << endl;
+	}
+}
+
+int main()
+{
+  tr = false;
+	y = 0;
+	cin >> n;
+	l = n;
+	searchPrime(n);
+  // showPrime(x);
+	// factorate(n);
+  // showFactor(y);
+	// display(y);
+  displayPri(x);
 
   return 0;
 }

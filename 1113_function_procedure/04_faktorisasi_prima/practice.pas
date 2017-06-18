@@ -1,8 +1,8 @@
 program factorate;
 
 var
-prim:array [0..10000] of longint;
-outp:array [0..10000] of longint;
+prim:array [0..1000000] of longint;
+outp:array [0..1000000] of longint;
 n,x,it,y,l:longint;
 i:longint;
 tr:boolean;
@@ -15,20 +15,13 @@ i,j:longint;
 frek:longint;
 begin
 	x := 1;
-	for i := 2 to n div 2 do
+	for i := 2 to (n div 2) do
 	begin
-		frek := 0;
-		for j := 2 to trunc(sqrt(i)) do
+		while n mod i = 0 do
 		begin
-			if (i mod j = 0) then
-			begin
-				frek := frek + 1;
-			end;
-		end;
-		if (frek = 0) then
-		begin
+			n := n div i;
 			prim[x] := i;
-			x := x + 1;
+			inc(x);
 		end;
 	end;
 end;
