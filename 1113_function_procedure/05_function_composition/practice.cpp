@@ -30,21 +30,13 @@ int main()
 
   cin >> a >> b >> k >> x;
   
-  res = f(x);
+  res = x;
 
-  if ((1 <= k && k <= 5) && 
-  (-5 <= a && a <= 5) && 
-  (-5 <= b && b <= 5) &&
-  (-5 <= x && x <= 5))
+  for (int i = 0; i < k; i++)
   {
-    if (k >= 2)
-    {
-      for (int i = 0; i < k - 1; i++)
-      {
-        res *= f(x);
-      }
-    }
-    // res = power(f(x), k);
+    // cout << res << endl;
+    res = f(res);
+    // cout << res << endl;
   }
 
   cout << res << endl;
