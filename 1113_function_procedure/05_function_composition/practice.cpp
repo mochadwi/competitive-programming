@@ -2,14 +2,25 @@
 
 using namespace std;
 
-short a, b, x, k = 0;
+int a, b, x, k = 0;
 
-int f(short x)
+int f(int x)
 {
-  short ret = ((a * x) + b);
+  int ret = ((a * x) + b);
   if (ret < 0) return ret * -1; // absolute val
   
   return ret; 
+}
+
+int power(int x, int n)
+{
+  int m;
+  if (n == 0) return 1;
+  if (n % 2 == 0)
+  {
+    m = power(x, n / 2);
+    return m * m;
+  } else return x * power(x, n - 1);
 }
 
 int main()
@@ -19,18 +30,24 @@ int main()
 
   cin >> a >> b >> k >> x;
   
+  res = f(x);
+
   if ((1 <= k && k <= 5) && 
   (-5 <= a && a <= 5) && 
   (-5 <= b && b <= 5) &&
   (-5 <= x && x <= 5))
   {
-    for (int i = 0; i < k; i++)
+    if (k >= 2)
     {
-      res *= f(x);
+      for (int i = 0; i < k - 1; i++)
+      {
+        res *= f(x);
+      }
     }
-    // res = pow(f(x), k);
-    cout << res << endl;
+    // res = power(f(x), k);
   }
+
+  cout << res << endl;
 
   return 0;
 }
