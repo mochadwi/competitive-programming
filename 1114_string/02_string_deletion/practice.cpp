@@ -48,6 +48,12 @@ int main()
 {
   // cout << "s1: serbaser" << endl;
   // cout << "s2: ser" << endl;
-  cout << deletion("serbaser", "ser") << endl;
+  string s1, s2;
+  string res;
+  cin >> s1 >> s2;
+  // cout << deletion("serbaser", "ser") << endl;
+  res = deletion(s1, s2);
+  cout << res << endl;
+  
   return 0;
 }
