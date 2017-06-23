@@ -3,57 +3,47 @@
 using namespace std;
 
 string deletion(string s1, string s2)
-// int deletion(string s1, string s2)
 {
   int i, j = 0;
   int len1 = s1.length();
   int len2 = s2.length();
-  bool correct[len1];
-  bool match;
-  string res = "";
   int count = 0;
+  string del = "";
+  bool match;
 
-  // init correct
   for (i = 0; i < len1; i++)
   {
-    correct[i] = true;
-  }
-
-  for (i = 0; i < (len1 - len2 + 1); i++)
-  {
-    // match = true;
+    match = true;
+    count = 0;
     for (j = 0; j < len2; j++)
     {
       if (s1[i+j] != s2[j])
       {
-        // match = false;
+        match = false;
         break;
       }
-      correct[i+j] = false;
+      count++;
     }
 
-    // if (match)
-    if (correct[i])
+    // if (count == len2)
+    if (match)
     {
-      res = res + s1[i];
+      del = s1.erase(i, j);
+      len1 = s1.length() - len2 + 1;
+      i -= j;
+      // cout << s1 << endl;
     }
   }
 
-  // cout << "res: " << res <<endl;
-  return res;
-  // return count;
+  return s1;
 }
 
 int main()
 {
-  // cout << "s1: serbaser" << endl;
-  // cout << "s2: ser" << endl;
   string s1, s2;
-  string res;
   cin >> s1 >> s2;
-  // cout << deletion("serbaser", "ser") << endl;
-  res = deletion(s1, s2);
-  cout << res << endl;
+  cout << deletion(s1, s2) << endl;
+  // deletion(s1, s2);
   
   return 0;
 }
