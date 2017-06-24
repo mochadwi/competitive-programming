@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-const int limit = 100;
+const int limit = 101;
 const char alphabet[limit] = "abcdefghijklmnopqrstuvwxyz";
 char message[limit] = "";
 int k = 0;
@@ -13,24 +13,18 @@ string caesarChiper(string message, int key)
   char ch;
   string res = "";
 
-  for (i = 0; i < message.length(); i++)
+  for (i = 0; message[i] != '\0'; i++)
   {
     ch = tolower(message[i]);
-    if (ch >= 'a' && ch <= 'z')
-    {
-      ch = ch + key;
-      if (ch > 'z') ch = ch - 'z' + 'a' - 1;
-
-      message[i] = ch;
-    }
+    res += (ch + key - 'a') % 26 + 'a';
   }
 
-  return message;
+  return res;
 }
 
 int main()
 {
-  cin.getline(message, 100);
+  cin.getline(message, 101);
   cin >> k;
 
   cout << caesarChiper(message, k) << endl;
