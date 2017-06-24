@@ -2,34 +2,38 @@
 #include <string>
 using namespace std;
 
-string word = "";
+const int limit = 100;
+const char alphabet[limit] = "abcdefghijklmnopqrstuvwxyz";
+char message[limit] = "";
 int k = 0;
 
-string caesarChiper(string word, int k)
+string caesarChiper(string message, int key)
 {
   int i, j = 0;
+  char ch;
   string res = "";
 
-  for (i = 0; i < word.length(); i++)
+  for (i = 0; i < message.length(); i++)
   {
-    word[i] += k;
-    if (word[i] > 'z')
+    ch = tolower(message[i]);
+    if (ch >= 'a' && ch <= 'z')
     {
-      j = word[i] - 'z';
-      // cout << j << endl;
-      word[i] = 'a' - 1 + j;
-      // cout << word[i] << endl;
+      ch = ch + key;
+      if (ch > 'z') ch = ch - 'z' + 'a' - 1;
+
+      message[i] = ch;
     }
   }
 
-  return word;
+  return message;
 }
 
 int main()
 {
-  cin >> word >> k;
+  cin.getline(message, 100);
+  cin >> k;
 
-  cout << caesarChiper(word, k) << endl;
+  cout << caesarChiper(message, k) << endl;
   
   return 0;
 }
