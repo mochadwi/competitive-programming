@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cmath>
 using namespace std;
 
 const int limit = 101;
@@ -18,13 +19,16 @@ int main()
 
   for (int i = 0; i < n; i++)
   {
+    couponBool[i] = false;
     cin >> coupon[i];
-    min[i] = ((coupon[i] - x) < 0) ? (coupon[i] - x) * -1 : (coupon[i] - x); // absolute value, deviance
+    min[i] = abs(coupon[i] - x);
+    // min[i] = ((coupon[i] - x) < 0) ? (coupon[i] - x) * -1 : (coupon[i] - x); // absolute value
+    // cout << "min["<<i<<"]: " << min[i] << endl;
   }
 
+  // find minimum value
   tempMin = min[0];
-  couponBool[0] = true;
-  for (int i = 1; i < n; i++)
+  for (int i = 0; i < n; i++)
   {
     if (min[i] <= tempMin)
     {
@@ -33,15 +37,12 @@ int main()
     }
   }
 
-  for (int i = 0; i < n; i++)
+  for (int i = 0; i < n-1; i++)
   {
-    if (couponBool[i])
-    {
-      cout << min[i];
-    }
-
-    if (i < n-1) cout << " ";
-    else cout << endl;
+    // if (couponBool[i] && ((coupon[i] < ))
+    // {
+    //   cout << coupon[i];
+    // } 
   }
 
   cout << endl;
