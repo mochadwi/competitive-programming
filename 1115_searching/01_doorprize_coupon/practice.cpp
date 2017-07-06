@@ -3,35 +3,41 @@
 using namespace std;
 
 int main(){
-	long P, T, X, W = 0, WD = 0, i;
+	int idx;
+  long n, x, min = 0;
 
-	cin >> T >> X;
+  cin >> n >> x;
 
-	long N[T], D[T];
+  long c[n], m[n];
 
-	for(i = 0; i < T; i++){
-		cin >> N[i];
-		D[i] = abs(X - N[i]);
-	}
+  for (int i=0; i<n; i++)
+  {
+    cin >> c[i];
+    m[i] = abs(x - c[i]);
+  }
 
-	for(i = 0; i < T; i++){
-		if(i == 0){
-			WD = D[i];
-			P = i;
-		}else{
-			if(WD > D[i]){
-				WD = D[i];
-				P = i;
-			}else if(WD == D[i]){
-				if(N[P] > N[i]){
-					P = i;
-				}
-			}
-		}
-    W = N[P];
-	}
-  
-	cout << W << endl;
+  for (int i=0; i<n; i++)
+  {
+    // initial state for min value
+    if (min == 0)
+    {
+      min = m[i];
+      idx = i;
+    } else
+    {
+      // check for minimum value
+      if (min > m[i])
+      {
+        min = m[i];
+        idx = i;
+      } else if (min == m[i])
+      {
+        if (c[idx] > c[i]) idx = i;
+      }
+    }
+  }
+
+  cout << c[idx] << endl;
 
 	return 0;
 }
