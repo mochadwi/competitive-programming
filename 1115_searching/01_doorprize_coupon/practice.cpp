@@ -21,7 +21,7 @@ int main()
   {
     couponBool[i] = false;
     cin >> coupon[i];
-    min[i] = abs(coupon[i] - x);
+    min[i] = (coupon[i] < x) ? (x - coupon[i]) : (coupon[i] - x);
     // min[i] = ((coupon[i] - x) < 0) ? (coupon[i] - x) * -1 : (coupon[i] - x); // absolute value
     // cout << "min["<<i<<"]: " << min[i] << endl;
   }
@@ -34,16 +34,23 @@ int main()
     {
       couponBool[i] = true;
       tempMin = min[i];
-      // cout << "tempMin: " << tempMin << endl;
+      cout << "tempMin: " << tempMin << endl;
       // cout << "i: " << i << endl;
     }
   }
 
   for (int i = 0; i < n; i++)
   {
-    if (couponBool[i] && (abs(coupon[i] - x) == tempMin) && (coupon[i] < x))
+    // cout << "couponBool["<<i<<"]: " << couponBool[i] << endl;
+    // cout << "coupon["<<i<<"]: " << coupon[i] << endl;
+    // cout << "abs(coupon["<<i<<"] - x): " << abs(coupon[i] - x) << endl;
+    if (couponBool[i] && (abs(coupon[i] - x) == tempMin))
     {
-      cout << coupon[i];
+      if (coupon[i] == x)
+      {
+        continue;
+      }
+      // break;
     } 
   }
 
