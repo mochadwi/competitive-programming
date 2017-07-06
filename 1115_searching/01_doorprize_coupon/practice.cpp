@@ -34,15 +34,17 @@ int main()
     {
       couponBool[i] = true;
       tempMin = min[i];
+      // cout << "tempMin: " << tempMin << endl;
+      // cout << "i: " << i << endl;
     }
   }
 
-  for (int i = 0; i < n-1; i++)
+  for (int i = 0; i < n; i++)
   {
-    // if (couponBool[i] && ((coupon[i] < ))
-    // {
-    //   cout << coupon[i];
-    // } 
+    if (couponBool[i] && (abs(coupon[i] - x) == tempMin) && (coupon[i] < x))
+    {
+      cout << coupon[i];
+    } 
   }
 
   cout << endl;
