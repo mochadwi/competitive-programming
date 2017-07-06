@@ -16,24 +16,19 @@ int main(){
     m[i] = abs(x - c[i]);
   }
 
+  // initial state for min value
+  min = m[0];
+  idx = 0;
   for (int i=0; i<n; i++)
   {
-    // initial state for min value
-    if (min == 0)
+    // check for minimum value
+    if (min > m[i])
     {
       min = m[i];
       idx = i;
-    } else
+    } else if (min == m[i])
     {
-      // check for minimum value
-      if (min > m[i])
-      {
-        min = m[i];
-        idx = i;
-      } else if (min == m[i])
-      {
-        if (c[idx] > c[i]) idx = i;
-      }
+      if (c[idx] > c[i]) idx = i;
     }
   }
 
